@@ -1,0 +1,37 @@
+{
+  "name": "broadcast-example",
+  "version": "0.0.1",
+  "description": "ES6 stub project",
+  "main": "server/main.js",
+  "scripts": {
+    "start": "node server/main.js",
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "evg656e <evg656e@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evg656e/broadcast-example"
+  },
+  "keywords": [
+    "isomorphic",
+    "qml",
+    "node",
+    "webpack",
+    "gulp",
+    "babel",
+    "requirify"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@evg656e/requirify": "^0.0.3",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-register": "^6.24.1",
+    "babel-standalone": "^6.25.0",
+    "polyfill-qml": "^0.0.1",
+    "webpack": "^3.4.1",
+    "ws": "^3.1.0"
+  }
+}
