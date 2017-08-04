@@ -11,8 +11,8 @@ const basePath = path.resolve(__dirname, process.argv[3] || '..');
 const httpServer = http.createServer(function(req, res) {
     try {
         let pathname;
-        if (req.headers['request-path']) {
-            pathname = req.headers['request-path'];
+        if (req.headers['require-path']) {
+            pathname = req.headers['require-path'];
         }
         else {
             const requestUrl = url.parse(req.url);
@@ -20,8 +20,9 @@ const httpServer = http.createServer(function(req, res) {
             if (pathname === '/')
                 pathname = '/static/index.html';
             pathname = path.join(basePath, pathname);
-            console.log(requestUrl.pathname, '=>', pathname);
         }
+
+        console.log(pathname);
 
         res.writeHead(200);
         const fileStream = fs.createReadStream(pathname);
