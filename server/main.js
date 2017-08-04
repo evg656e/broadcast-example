@@ -6,16 +6,22 @@ const fs   = require('fs');
 const BroadcastServer = require('../dev/server/broadcast.js');
 
 const port     = process.argv[2] || 8080;
-const basePath = process.argv[3] || '..';
+const basePath = path.resolve(__dirname, process.argv[3] || '..');
 
 const httpServer = http.createServer(function(req, res) {
     try {
-        const requestUrl = url.parse(req.url);
-        let pathname = requestUrl.pathname;
-        if (pathname === '/')
-            pathname = '/static/index.html';
-        pathname = path.join(__dirname, basePath, pathname);
-        console.log(requestUrl.pathname, '=>', pathname);
+        let pathname;
+        if (req.headers['request-path']) {
+            pathname = req.headers['request-path'];
+        }
+        else {
+            const requestUrl = url.parse(req.url);
+            pathname = requestUrl.pathname;
+            if (pathname === '/')
+                pathname = '/static/index.html';
+            pathname = path.join(basePath, pathname);
+            console.log(requestUrl.pathname, '=>', pathname);
+        }
 
         res.writeHead(200);
         const fileStream = fs.createReadStream(pathname);
