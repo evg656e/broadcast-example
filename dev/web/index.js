@@ -1,7 +1,7 @@
 var script = document.createElement('script');
 script.onload = function() {
     var Babel = require('babel-standalone');
-    require.transform = function(content) {
+    require.extensions['.js'] = function(content) {
         return Babel.transform(content, { presets: ['es2015'] }).code;
     };
     require('./app/web/index');
