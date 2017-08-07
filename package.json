@@ -1,11 +1,11 @@
 {
   "name": "broadcast-example",
-  "version": "0.0.1",
-  "description": "ES6 stub project",
+  "version": "0.0.2",
+  "description": "ES6 and TypeScript stub project",
   "main": "server/main.js",
   "scripts": {
     "start": "node server/main.js",
-    "build": "webpack --config es6/webpack.config.js",
+    "build": "webpack --config es6/webpack.config.js && webpack --config ts/webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "evg656e <evg656e@gmail.com>",
@@ -31,6 +31,9 @@
     "babel-register": "^6.24.1",
     "babel-standalone": "^6.25.0",
     "polyfill-qml": "^0.0.1",
+    "ts-loader": "^2.3.2",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.4.2",
     "webpack": "^3.4.1",
     "ws": "^3.1.0"
   }

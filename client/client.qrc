@@ -3,5 +3,6 @@
         <file>main.qml</file>
         <file>qtquickcontrols2.conf</file>
         <file>../es6/dist/qml/broadcast.qml.js</file>
+        <file>../ts/dist/qml/broadcast.qml.js</file>
     </qresource>
 </RCC>

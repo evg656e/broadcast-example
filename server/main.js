@@ -3,8 +3,10 @@ const url  = require('url');
 const path = require('path');
 const fs   = require('fs');
 
-// const BroadcastServer = require('../es6/dev/server/broadcast.js');
-const BroadcastServer = require('../es6/dist/server/broadcast.js');
+// const BroadcastServer = require('../es6/dev/server/broadcast');
+// const BroadcastServer = require('../es6/dist/server/broadcast');
+const BroadcastServer = require('../ts/dev/server/broadcast');
+// const BroadcastServer = require('../ts/dist/server/broadcast');
 
 const port     = process.argv[2] || 8080;
 const basePath = path.resolve(__dirname, process.argv[3] || '..');
