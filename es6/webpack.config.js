@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = [
     // web config
@@ -17,6 +18,9 @@ module.exports = [
                     exclude: /node_modules/,
                     loader: 'babel-loader'
                 }
+            ],
+            noParse: [
+                /websocket\.js$/
             ]
         }
     },
@@ -40,11 +44,9 @@ module.exports = [
                 }
             ]
         },
-        resolve: {
-            alias: {
-                'websocket': 'polyfill-qml/lib/websocket'
-            }
-        }
+        plugins: [
+            new webpack.IgnorePlugin(/^ws$/)
+        ]
     },
     // node server config
     {
@@ -64,12 +66,10 @@ module.exports = [
                     exclude: /node_modules/,
                     loader: 'babel-loader'
                 }
+            ],
+            noParse: [
+                /websocket\.js$/
             ]
-        },
-        resolve: {
-            alias: {
-                'websocket': 'ws'
-            }
         }
     }
 ];
