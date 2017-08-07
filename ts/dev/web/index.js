@@ -4,7 +4,6 @@ script.onload = function() {
     require.extensions['.ts'] = function(content) {
         return ts.transpileModule(content, { compilerOptions: { module: ts.ModuleKind.CommonJS } }).outputText;
     };
-    console.log(require, ts);
     require('./ts/app/index');
 };
 script.onerror = function(e) {
