@@ -1,6 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
-
 
 module.exports = [
     // web config
@@ -19,16 +17,13 @@ module.exports = [
                     exclude: /node_modules/,
                     loader: 'babel-loader'
                 }
-            ],
-            noParse: [
-                /websocket\.js$/
             ]
         }
     },
     // qml config
     {
         context: __dirname,
-        entry: ['./lib/polyfill.qml.js', './lib/client.js'],
+        entry: ['core-js/fn/object/set-prototype-of', 'polyfill-qml', './lib/client.js'],
         output: {
             path: path.resolve(__dirname, 'dist/qml'),
             filename: 'broadcast.qml.js',
@@ -45,9 +40,11 @@ module.exports = [
                 }
             ]
         },
-        plugins: [
-            new webpack.IgnorePlugin(/^ws$/)
-        ]
+        resolve: {
+            alias: {
+                'websocket': 'polyfill-qml/lib/websocket'
+            }
+        }
     },
     // node server config
     {
@@ -67,10 +64,12 @@ module.exports = [
                     exclude: /node_modules/,
                     loader: 'babel-loader'
                 }
-            ],
-            noParse: [
-                /websocket\.js$/
             ]
+        },
+        resolve: {
+            alias: {
+                'websocket': 'ws'
+            }
         }
     }
 ];

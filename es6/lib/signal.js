@@ -8,7 +8,11 @@ console.log('defining Signal');
 */
 export class Signal {
     constructor() {
-        this.slots = null;
+        //! \see https://stackoverflow.com/questions/340383/can-a-javascript-object-have-a-prototype-chain-but-also-be-a-function
+        function signal() {
+            return Signal.prototype.emit.apply(signal, arguments);
+        }
+        return Object.setPrototypeOf(signal, Signal.prototype);
     }
 
     emit() {
@@ -42,7 +46,7 @@ export class Signal {
             return;
         if (typeof this.slots === 'function') {
             if (slot === this.slots)
-                this.slots = null;
+                delete this.slots;
         }
         else {
             for (let i = this.slots.length; i-- > 0;)
@@ -51,7 +55,7 @@ export class Signal {
             if (this.slots.length === 1)
                 this.slots = this.slots[0];
             else if (this.slots.length === 0)
-                this.slots = null;
+                delete this.slots;
         }
     }
 
@@ -66,12 +70,11 @@ export class Signal {
                 slot.apply(this, arguments);
             }
         }
-        g.slot = slot;
         this.connect(g);
     }
 
     disconnectAll() {
-        this.slots = null;
+        delete this.slots;
     }
 
     slotCount() {
@@ -83,14 +86,6 @@ export class Signal {
     }
 }
 
-/*!
-    \fn signal
-*/
 export default function signal() {
-    //! \see https://stackoverflow.com/questions/340383/can-a-javascript-object-have-a-prototype-chain-but-also-be-a-function
-    function signal() {
-        return Signal.prototype.emit.apply(signal, arguments);
-    }
-    Object.setPrototypeOf(signal, Signal.prototype);
-    return signal;
+     return new Signal();
 }
