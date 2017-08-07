@@ -18,9 +18,9 @@
     "qml",
     "node",
     "webpack",
-    "gulp",
     "babel",
-    "requirify"
+    "requirify",
+    "typescript"
   ],
   "license": "MIT",
   "devDependencies": {
