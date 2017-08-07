@@ -2,8 +2,8 @@ import QtQuick 2.9
 import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
 import QtWebSockets 1.1
-import '../../../dev/qml/broadcast.qml.js' as Broadcast
-//import '../../../dist/qml/broadcast.qml.js' as Broadcast
+import '../es6/dev/qml/broadcast.qml.js' as Broadcast
+//import '../es6/dist/qml/broadcast.qml.js' as Broadcast
 
 ApplicationWindow {
     visible: true

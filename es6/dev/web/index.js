@@ -4,7 +4,7 @@ script.onload = function() {
     require.extensions['.js'] = function(content) {
         return Babel.transform(content, { presets: ['es2015'] }).code;
     };
-    require('./app/web/index');
+    require('./es6/app/index');
 };
 script.onerror = function(e) {
     console.error('The script ' + e.target.src + ' is not accessible.');

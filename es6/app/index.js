@@ -1,4 +1,4 @@
-import { default as BroadcastClient } from '../../lib/client';
+import { default as BroadcastClient } from '../lib/client';
 
 console.log('defining main()');
 

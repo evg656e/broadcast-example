@@ -1,10 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
 
+
 module.exports = [
     // web config
     {
-        entry: './app/web/index.js',
+        context: __dirname,
+        entry: './app/index.js',
         output: {
             path: path.resolve(__dirname, 'dist/web'),
             filename: 'index.js',
@@ -25,6 +27,7 @@ module.exports = [
     },
     // qml config
     {
+        context: __dirname,
         entry: ['./lib/polyfill.qml.js', './lib/client.js'],
         output: {
             path: path.resolve(__dirname, 'dist/qml'),
@@ -48,6 +51,7 @@ module.exports = [
     },
     // node server config
     {
+        context: __dirname,
         entry: './lib/server.js',
         output: {
             path: path.resolve(__dirname, 'dist/server'),
