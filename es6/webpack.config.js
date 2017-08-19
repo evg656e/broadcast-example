@@ -27,7 +27,7 @@ module.exports = [
     // qml config
     {
         context: __dirname,
-        entry: ['core-js/fn/object/set-prototype-of', 'polyfill-qml', './lib/client.js'],
+        entry: ['polyfill-qml', './lib/client.js'],
         output: {
             path: path.resolve(__dirname, 'dist/qml'),
             filename: 'broadcast.qml.js',

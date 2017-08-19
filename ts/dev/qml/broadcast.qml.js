@@ -2,7 +2,6 @@
 Qt.include('../../../node_modules/@evg656e/requirify/dist/require.js');
 require.addPath('../../..');
 require('polyfill-qml');
-require('core-js/fn/object/set-prototype-of');
 var ts = Typescript.ts;
 require.extensions['.ts'] = function(content) {
     return ts.transpileModule(content, { compilerOptions: { module: ts.ModuleKind.CommonJS } }).outputText;
